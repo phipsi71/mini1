@@ -1,0 +1,34 @@
+<h1>Answers#poke</h1>
+<p>Find me in app/views/answers/poke.html.erb</p>
+<p><%= session[:current_user_id] %></p>
+
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Question:</strong>
+  <%= @question.poke %>
+</p>
+
+<div class="form_row">
+    <label for="answ">Your Answer:</label>
+    <% [ 'yes', 'no' ].each do |answ| %>
+      <br><%= radio_button_tag 'answ', answ, @answ == answ %>
+      <%= answ.humanize %>
+    <% end %>
+</div>
+
+<%= form_for(@answer) do |f| %>
+
+  <div class="field">
+    <%= f.label :sample_text %><br>
+    <%= f.text_field :sample_text %>
+  </div>
+
+<% end %>
+
+
+<p>
+	<%= button_tag(type: 'button') do
+		content_tag(:strong, 'Ok')
+	end %>
+</p>

@@ -1,0 +1,48 @@
+<%= form_for(@inquiry) do |f| %>
+  <% if @inquiry.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@inquiry.errors.count, "error") %> prohibited this inquiry from being saved:</h2>
+
+      <ul>
+      <% @inquiry.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<h3>Frage: <%= @question.poke %></h3>
+
+  <div class="field">
+    <%= f.label :answer %><br />
+    <%= f.label :answer, "Yes", :value => "true"  %>
+    <%= f.radio_button :answer, true, :checked => false %>
+
+    <%= f.label :answer, "No", :value => "false" %>
+    <%= f.radio_button :answer, false, :checked => false %>
+
+    <%= f.label :answer, "Enthaltung", :value => nil %>
+    <%= f.radio_button :answer, false, :checked => nil %>
+  </div>
+
+<% 
+=begin %>
+
+  <div class="field">
+    <%= f.label :answer %><br>
+    <%= f.check_box :answer %>
+  </div>
+<% 
+=end %>
+
+
+  <div class="field">
+    <%= f.label :remark %><br>
+    <%= f.text_field :remark %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+<p>Session: <%= session[:current_user_id] %></p>

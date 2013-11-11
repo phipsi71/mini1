@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  session_id: MyString
+  logon_time: 2013-11-05 16:58:43
+
+two:
+  session_id: MyString
+  logon_time: 2013-11-05 16:58:43
