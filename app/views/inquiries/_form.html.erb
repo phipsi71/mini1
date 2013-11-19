@@ -11,18 +11,16 @@
     </div>
   <% end %>
 
-<h3>Frage: <%= @question.poke %></h3>
+<h3>Frage <%= @question.id %>: <%= @question.poke %></h3>
 
   <div class="field">
     <%= f.label :answer %><br />
-    <%= f.label :answer, "Yes", :value => "true"  %>
-    <%= f.radio_button :answer, true, :checked => false %>
-
-    <%= f.label :answer, "No", :value => "false" %>
+  
+    <%= f.radio_button :answer, true, :checked => false  %>
+    <%= f.label :answer, "Yes", :value => "true"  %><br />
+  
     <%= f.radio_button :answer, false, :checked => false %>
-
-    <%= f.label :answer, "Enthaltung", :value => nil %>
-    <%= f.radio_button :answer, false, :checked => nil %>
+    <%= f.label :answer, "No", :value => "false" %><br />
   </div>
 
 <% 
@@ -45,4 +43,5 @@
     <%= f.submit %>
   </div>
 <% end %>
+  
 <p>Session: <%= session[:current_user_id] %></p>

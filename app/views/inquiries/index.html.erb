@@ -3,8 +3,10 @@
 <table>
   <thead>
     <tr>
+      <th>Question Nr</th>
       <th>Answer</th>
       <th>Remark</th>
+      <th>Session ID</th>
       <th></th>
       <th></th>
       <th></th>
@@ -14,6 +16,7 @@
   <tbody>
     <% @inquiries.each do |inquiry| %>
       <tr>
+        <td><%= inquiry.question_id %></td>
         <td><%= inquiry.answer %></td>
         <td><%= inquiry.remark %></td>
         <td><%= inquiry.session_id %></td>

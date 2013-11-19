@@ -1,6 +1,6 @@
 class InquiriesController < ApplicationController
   before_action :set_inquiry, only: [:show, :edit, :update, :destroy]
-  before_action :set_active_question
+  before_action :get_active_question
 
 
   # GET /inquiries
@@ -72,8 +72,9 @@ class InquiriesController < ApplicationController
       @inquiry = Inquiry.find(params[:id])
     end
 
-    def set_active_question
+    def get_active_question
         @question = Question.active.first
+        
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

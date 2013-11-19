@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_action :set_question, only: [:show, :edit, :update, :destroy]
+  before_action :set_question, only: [:show, :edit, :update, :destroy, :set_active]
 
   # GET /questions
   # GET /questions.json
@@ -17,6 +17,24 @@ class QuestionsController < ApplicationController
     @question = Question.new
   end
 
+  def set_active
+
+    #@qa = Question.all
+    #@qa.each do |x|   # setze alle auf false
+    #    x.is_active = 'false' 
+    #    x.save
+    #end
+
+    Question.set_false  # alle Records auf 'false' setzen
+    
+    @question.is_active = 'true' # setzt nur current auf 'true'
+    @question.save
+
+  end
+
+  def get_active
+    @active_question = Question.active.first
+  end
 
 
   # GET /questions/1/edit
@@ -63,6 +81,9 @@ class QuestionsController < ApplicationController
     end
   end
 
+
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_question
@@ -73,4 +94,6 @@ class QuestionsController < ApplicationController
     def question_params
       params.require(:question).permit(:poke, :is_active)
     end
+
+
 end
