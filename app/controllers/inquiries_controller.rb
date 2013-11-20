@@ -33,7 +33,7 @@ class InquiriesController < ApplicationController
 
     respond_to do |format|
       if @inquiry.save
-        format.html { redirect_to @inquiry, notice: 'Inquiry was successfully created.' }
+        format.html { redirect_to pages_path, notice: 'Inquiry was successfully created.' }
         format.json { render action: 'show', status: :created, location: @inquiry }
       else
         format.html { render action: 'new' }

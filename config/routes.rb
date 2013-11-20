@@ -1,6 +1,7 @@
 Mini1::Application.routes.draw do
  
   
+  get "pages/show", as: 'pages'
   resources :graphs
 
   get "questions/:id/set_active", to: 'questions#set_active', as: 'activequestion'
