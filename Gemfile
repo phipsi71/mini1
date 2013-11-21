@@ -45,3 +45,9 @@ end
 gem 'debugger', group: [:development, :test]
 
 gem 'lazy_high_charts'
+
+#gem "twitter-bootstrap-rails"
+gem 'twitter-bootstrap-rails', :git => 'https://github.com/seyhunak/twitter-bootstrap-rails.git'
+gem 'less-rails'
+
+gem "bootstrap-switch-rails"

@@ -1,6 +1,7 @@
 Mini1::Application.routes.draw do
  
-  
+  root to: 'inquiries#new'
+
   get "pages/show", as: 'pages'
   resources :graphs
 
@@ -9,6 +10,8 @@ Mini1::Application.routes.draw do
   resources :questions
 
   resources :inquiries
+
+  resources :voters
 
   #get "answers/poke"
   #get "questions/index"

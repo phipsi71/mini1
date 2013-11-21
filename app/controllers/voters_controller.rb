@@ -5,7 +5,6 @@ class VotersController < ApplicationController
   # GET /voters.json
   def index
     @voters = Voter.all
-	debugger
   end
 
   # GET /voters/1
@@ -15,7 +14,6 @@ class VotersController < ApplicationController
 
   # GET /voters/new
   def new
-	debugger
     @voter = Voter.new
   end
 
@@ -26,7 +24,6 @@ class VotersController < ApplicationController
   # POST /voters
   # POST /voters.json
   def create
-	debugger
     @voter = Voter.new(voter_params)
 
     respond_to do |format|
@@ -43,7 +40,6 @@ class VotersController < ApplicationController
   # PATCH/PUT /voters/1
   # PATCH/PUT /voters/1.json
   def update
-	debugger
     respond_to do |format|
       if @voter.update(voter_params)
         format.html { redirect_to @voter, notice: 'Voter was successfully updated.' }
@@ -74,6 +70,5 @@ class VotersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def voter_params
       params.require(:voter).permit(:session_id, :logon_time)
-	  debugger
     end
 end

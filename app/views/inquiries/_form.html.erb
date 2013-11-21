@@ -12,26 +12,22 @@
   <% end %>
 
 <h3>Frage <%= @question.id %>: <%= @question.poke %></h3>
+<%= f.label :answer %><br />
+<!--div class="btn-group btn-group-lg">
 
-  <div class="field">
-    <%= f.label :answer %><br />
-  
-    <%= f.radio_button :answer, true, :checked => false  %>
-    <%= f.label :answer, "Yes", :value => "true"  %><br />
-  
-    <%= f.radio_button :answer, false, :checked => false %>
-    <%= f.label :answer, "No", :value => "false" %><br />
-  </div>
+    <%= f.radio_button :answer, true, :checked => false, :class => "btn" %>
+    <%= f.label :answer, "Yes"  %>
+    <%= f.radio_button :answer, false, :checked => false, :class => "btn" %>
+    <%= f.label :answer, "No" %> 
 
-<% 
-=begin %>
+</div-->
 
-  <div class="field">
-    <%= f.label :answer %><br>
-    <%= f.check_box :answer %>
-  </div>
-<% 
-=end %>
+
+
+<div class="make-switch switch-large">
+  <%= f.radio_button :answer, true, :type => :radio, :value => 'true', :checked => false %>
+</div>
+
 
 
   <div class="field">
@@ -40,8 +36,15 @@
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Send' %>
   </div>
-<% end %>
+
+
+
+
+
+
+<% end %>  <!--   FORM END -->
   
 <p>Session: <%= session[:current_user_id] %></p>
+
