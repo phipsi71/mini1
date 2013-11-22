@@ -1,0 +1,12 @@
+source code translated:
+
+<div class="btn-group" data-toggle="buttons-radio">
+  <input id="first" name="inquiry[answer]" style="display:none;" type="radio" value="ABC" />
+  <label for="first" class="btn btn-primary">First</label>
+
+  <input id="second" name="inquiry[answer]" style="display:none;" type="radio" value="PQR" />
+  <label for="second" class="btn btn-primary">Second</label>
+
+  <input id="third" name="inquiry[answer]" style="display:none;" type="radio" value="MNO" />
+  <label for="third" class="btn btn-primary">Third</label>
+</div>
