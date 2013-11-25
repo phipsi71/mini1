@@ -6,7 +6,6 @@ class Question < ActiveRecord::Base
 	validates_inclusion_of :is_active, :in => [true, false]
 
 
-
 	# Class Method:
 	def self.set_false
 		Question.update_all({:is_active => false})
@@ -16,7 +15,6 @@ class Question < ActiveRecord::Base
 	# This defines a class method :
 	# def self.method_name
 	# end
-
 
 
 	# This defines an instance method :

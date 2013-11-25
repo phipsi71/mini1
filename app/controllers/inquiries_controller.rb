@@ -1,6 +1,7 @@
 class InquiriesController < ApplicationController
   before_action :set_inquiry, only: [:show, :edit, :update, :destroy]
   before_action :get_active_question
+  rescue_from ActiveRecord::RecordNotFound, with: :no_record_error
 
 
   # GET /inquiries
@@ -12,10 +13,12 @@ class InquiriesController < ApplicationController
   # GET /inquiries/1
   # GET /inquiries/1.json
   def show
+
   end
 
   # GET /inquiries/new
   def new
+    redirect_to '/pages/show', notice: 'No active question' if @question.nil?
     @inquiry  = Inquiry.new
   end
 
@@ -26,7 +29,6 @@ class InquiriesController < ApplicationController
   # POST /inquiries
   # POST /inquiries.json
   def create
-    
     @inquiry = Inquiry.new(inquiry_params)
     @inquiry.session_id = session[:current_user_id]
     @inquiry.question_id = @question.id
@@ -66,19 +68,19 @@ class InquiriesController < ApplicationController
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_inquiry
-      @inquiry = Inquiry.find(params[:id])
-    end
 
-    def get_active_question
-        @question = Question.active.first
-        
-    end
+private
+# Use callbacks to share common setup or constraints between actions.
+  def set_inquiry
+    @inquiry = Inquiry.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def inquiry_params
-      params.require(:inquiry).permit(:answer, :remark)
-    end
+  def get_active_question
+      @question = Question.active.first
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def inquiry_params
+    params.require(:inquiry).permit(:answer, :remark)
+  end
 end

@@ -21,13 +21,6 @@ ActiveRecord::Schema.define(version: 20131107152126) do
     t.datetime "updated_at"
   end
 
-  create_table "bbblas", force: true do |t|
-    t.string   "sample_text"
-    t.integer  "irgend_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "inquiries", force: true do |t|
     t.boolean  "answer"
     t.string   "remark"
@@ -38,10 +31,8 @@ ActiveRecord::Schema.define(version: 20131107152126) do
   end
 
   create_table "questions", force: true do |t|
-    t.string   "poke"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "is_active"
+    t.string  "poke"
+    t.boolean "is_active"
   end
 
   create_table "voters", force: true do |t|
