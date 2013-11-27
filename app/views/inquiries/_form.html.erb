@@ -28,11 +28,11 @@
 </div-->
 
 
-<div class="btn-group btn-group-lg" data-toggle="buttons-radio">
-  <%= f.radio_button :answer, "true", :id=>"first", :style=>"display:none;" %>
-  <label for="first" class="btn btn-success btn-large">&nbsp YES</label>
+<div class="btn-group btn-group-large" data-toggle="buttons-radio">
+  <%= f.radio_button :answer, "true", :id=>"first",  :style=>"display:none;" %>
+  <label for="first" class="btn btn-success btn-large">YES &nbsp</label>
 
-  <%= f.radio_button :answer, "", :id=>"second", :style=>"display:none;" %>
+  <%= f.radio_button :answer, "", :id=>"second", :checked=>true, :style=>"display:none;" %>
   <label for="second" class="btn btn-primary btn-large">Not sure</label>
 
   <%= f.radio_button :answer, "false", :id=>"third", :style=>"display:none;" %>
@@ -41,13 +41,15 @@
 
 <br/><br/>
 
+
+
   <div class="field">
     <%= f.label :remark %>
     <%= f.text_field :remark , :class=>"input-xlarge" %>
   </div>
 
   <div class="actions">
-    <%= f.submit 'Send my vote' %>
+    <%= f.submit 'Vote', class: 'btn-large' %>
   </div>
 
 
