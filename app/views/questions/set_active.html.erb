@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Active Poke:</strong>
-  <%= @question.poke %>
+  <strong>Current Question:</strong>
+  <h4><%= @question.poke %></h4>
 </p>
 
 <p>
@@ -15,7 +15,9 @@
 <%
 =end %>
 
+<div>
+<p class="text-info">Users now may answer the question displayed on their device.</p>
+</div>
 
-<%= link_to 'Close question and show graph', graphs_path %>
-
+<%= link_to 'Close question and show graph', graphs_path, :class => 'btn'  %>
 

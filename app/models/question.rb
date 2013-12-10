@@ -12,6 +12,7 @@ class Question < ActiveRecord::Base
 	end
 
 
+
 	# This defines a class method :
 	# def self.method_name
 	# end

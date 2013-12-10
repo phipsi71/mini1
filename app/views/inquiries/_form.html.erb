@@ -11,16 +11,8 @@
     </div>
   <% end %>
 
-<h3>Frage <%= @question.id %>: <%= @question.poke %></h3>
-<%= f.label :answer %>
-
-<!--div class="btn-group btn-group-lg">
-    <%= f.radio_button :answer, true, :checked => false, :class => "btn" %>
-    <%= f.label :answer, "Yes"  %>
-    <%= f.radio_button :answer, false, :checked => false, :class => "btn" %>
-    <%= f.label :answer, "No" %>
-</div-->
-
+<h4>Frage <%= @question.id %>: <%= @question.poke %></h4>
+<!--%= f.label :answer %-->
 
 
 <!--div class="make-switch switch-large">
@@ -30,13 +22,13 @@
 
 <div class="btn-group btn-group-large" data-toggle="buttons-radio">
   <%= f.radio_button :answer, "true", :id=>"first",  :style=>"display:none;" %>
-  <label for="first" class="btn btn-success btn-large">YES &nbsp</label>
+  <label for="first" class="btn btn-primary btn-large">YES</label>
 
   <%= f.radio_button :answer, "", :id=>"second", :checked=>true, :style=>"display:none;" %>
-  <label for="second" class="btn btn-primary btn-large">Not sure</label>
+  <label for="second" class="btn btn-large">Not sure</label>
 
   <%= f.radio_button :answer, "false", :id=>"third", :style=>"display:none;" %>
-  <label for="third" class="btn btn-danger btn-large">&nbsp NO &nbsp</label>
+  <label for="third" class="btn btn-primary btn-large">NO</label>
 </div>
 
 <br/><br/>
@@ -49,7 +41,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit 'Vote', class: 'btn-large' %>
+    <%= f.submit 'Vote', class: 'btn btn-large' %>
   </div>
 
 

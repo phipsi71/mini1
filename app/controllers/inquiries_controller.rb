@@ -1,7 +1,7 @@
 class InquiriesController < ApplicationController
   before_action :set_inquiry, only: [:show, :edit, :update, :destroy]
   before_action :get_active_question
-  rescue_from ActiveRecord::RecordNotFound, with: :no_record_error
+  #rescue_from ActiveRecord::RecordNotFound, with: :no_record_error
 
 
   # GET /inquiries
@@ -18,7 +18,10 @@ class InquiriesController < ApplicationController
 
   # GET /inquiries/new
   def new
-    redirect_to '/pages/show', notice: 'No active question' if @question.nil?
+    if Inquiry.exists?(session[:current_user_id], @question.id)
+      redirect_to '/pages/show', alert: 'Question already answered. Please wait for the next question to be displayed'
+    end
+    redirect_to '/pages/show', alert: 'No active question' if @question.nil?
     @inquiry  = Inquiry.new
   end
 
@@ -35,13 +38,14 @@ class InquiriesController < ApplicationController
 
     respond_to do |format|
       if @inquiry.save
-        format.html { redirect_to pages_path, notice: 'Inquiry was successfully created.' }
+        format.html { redirect_to pages_path, notice: 'Thanks for your vote.' }
         format.json { render action: 'show', status: :created, location: @inquiry }
       else
         format.html { render action: 'new' }
         format.json { render json: @inquiry.errors, status: :unprocessable_entity }
       end
     end
+    
   end
 
   # PATCH/PUT /inquiries/1
@@ -76,7 +80,7 @@ private
   end
 
   def get_active_question
-      @question = Question.active.first
+    @question = Question.active.first
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

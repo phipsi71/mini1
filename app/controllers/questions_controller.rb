@@ -1,5 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy, :set_active]
+  
 
   # GET /questions
   # GET /questions.json
@@ -27,12 +28,13 @@ class QuestionsController < ApplicationController
 
     Question.set_false  # alle Records auf 'false' setzen
     
+    set_question        # find current active question
     @question.is_active = 'true' # setzt nur current auf 'true'
     @question.save
 
   end
 
-  def get_active
+  def get_active 
     @active_question = Question.active.first
   end
 
@@ -44,8 +46,9 @@ class QuestionsController < ApplicationController
   # POST /questions
   # POST /questions.json
   def create
-    @question = Question.new(question_params)
-
+    debugger
+    @question = Question.new(question_params) #   question_params is a hash:    {"poke"=>"Haben Sie viele Kinder?", "is_active"=>"0"}
+    debugger
     respond_to do |format|
       if @question.save
         format.html { redirect_to @question, notice: 'Question was successfully created.' }
