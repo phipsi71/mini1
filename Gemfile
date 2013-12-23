@@ -39,15 +39,14 @@ end
 # gem 'unicorn'
 
 # Use Capistrano for deployment
-# gem 'capistrano', group: :development
+gem 'rvm-capistrano', group: :development
 
 # Use debugger
 gem 'debugger', group: [:development, :test]
 
 gem 'lazy_high_charts'
 
-#gem "twitter-bootstrap-rails"
 gem 'twitter-bootstrap-rails', :git => 'https://github.com/seyhunak/twitter-bootstrap-rails.git'
 gem 'less-rails'
+# gem "bootstrap-switch-rails"
 
-gem "bootstrap-switch-rails"
