@@ -12,8 +12,9 @@ class Inquiry < ActiveRecord::Base
 		tot = Inquiry.where("question_id = ?", active_question_id).count
 		t = Inquiry.where("answer = 't'").where("question_id = ?", active_question_id).count
 		f = Inquiry.where("answer = 'f'").where("question_id = ?", active_question_id).count
-		e = Inquiry.where("answer = ''").where("question_id = ?",  active_question_id).count
-		{ total: tot, t_answers: t, f_answers: f, e_answers: e } # this is the return value : a hash
+		e = Inquiry.where("answer is NULL").where("question_id = ?",  active_question_id).count
+		v = Inquiry.where("answer is not NULL").where("question_id = ?",  active_question_id).count
+		{ total: tot, t_answers: t, f_answers: f, e_answers: e, v_answers: v } # this is the return value : a hash
 	end
 
 	def self.exists?(session_id, active_question_id)
