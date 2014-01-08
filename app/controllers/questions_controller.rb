@@ -46,9 +46,7 @@ class QuestionsController < ApplicationController
   # POST /questions
   # POST /questions.json
   def create
-    debugger
     @question = Question.new(question_params) #   question_params is a hash:    {"poke"=>"Haben Sie viele Kinder?", "is_active"=>"0"}
-    debugger
     respond_to do |format|
       if @question.save
         format.html { redirect_to @question, notice: 'Question was successfully created.' }

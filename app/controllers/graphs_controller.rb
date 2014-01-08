@@ -39,6 +39,8 @@ class GraphsController < ApplicationController
       ## or options for column
       #f.options[:chart][:defaultSeriesType] = "column"
       #f.plot_options({:column=>{:stacking=>"percent"}})
-    end
-  end
+    end #chart2 do
+
+    @remarks = @answer_count[:remarks]
+  end #def index
 end

@@ -14,13 +14,14 @@ class Inquiry < ActiveRecord::Base
 		f = Inquiry.where("answer = 'f'").where("question_id = ?", active_question_id).count
 		e = Inquiry.where("answer is NULL").where("question_id = ?",  active_question_id).count
 		v = Inquiry.where("answer is not NULL").where("question_id = ?",  active_question_id).count
-		{ total: tot, t_answers: t, f_answers: f, e_answers: e, v_answers: v } # this is the return value : a hash
+		{ total: tot, t_answers: t, f_answers: f, e_answers: e, v_answers: v, 
+			remarks: Inquiry.where("question_id = ?", active_question_id).collect {|r| r.remark} } # this is the return value : a hash ( including the remarks as array )
 	end
 
 	def self.exists?(session_id, active_question_id)
 		if Inquiry.where("session_id = ? AND question_id = ?", session_id, active_question_id).exists?
 			true
-		else 
+		else
 			false
 		end
 	end
