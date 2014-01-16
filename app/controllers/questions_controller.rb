@@ -27,6 +27,8 @@ class QuestionsController < ApplicationController
     #    x.save
     #end
 
+    
+
     Question.set_false  # alle Records auf 'false' setzen
     
     set_question        # find current active question
