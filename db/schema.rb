@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20131107152126) do
   end
 
   create_table "inquiries", force: true do |t|
-    t.boolean  "answer"
+    t.string   "answer"
     t.string   "remark"
     t.datetime "created_at"
     t.datetime "updated_at"

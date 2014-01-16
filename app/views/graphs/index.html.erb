@@ -6,14 +6,14 @@
 
 <table class="table">
 	<tr>
-		<td> 'Yes' votes:   <%= @answer_count[:t_answers] %> </td>
-		<td> 'No' votes :   <%= @answer_count[:f_answers] %> </td>
-		<td> 'Enth' votes : <%= @answer_count[:e_answers] %> </td>
+		<td> 'Yes' votes: <%= @answer_count[:t_answers] %> </td>
+		<td> 'No' votes : <%= @answer_count[:f_answers] %> </td>
+		<td> Abstentions: <%= @answer_count[:e_answers] %> </td>
 	</tr>
 	<tr>
 		<td> Valid votes :  <%= @total_valid %> </td>
-		<td> Einfaches Mehr :  <%= @einfaches_mehr %> </td>
-		<td> Absolutes Mehr :  <%= @absolutes_mehr %> </td>
+		<td> Simple majority :  <%= @einfaches_mehr %> </td>
+		<td> Absolute majority :  <%= @absolutes_mehr %> </td>
 	</tr>
 </table>
 

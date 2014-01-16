@@ -1,5 +1,7 @@
 class GraphsController < ApplicationController
 
+  before_action :authenticate
+
   def index
 
     @active_question = Question.active.first
@@ -13,19 +15,28 @@ class GraphsController < ApplicationController
     @absolutes_mehr = (@total_votes.to_f / 2 + 1).floor
 
     @chart2 = LazyHighCharts::HighChart.new('column') do |f|
-      f.title({:text=>"#{@active_question.poke}" })
+      f.title({ text: "#{@active_question.poke}" })
 
-      f.series( name: 'Votes',
-                data: [ @answer_count[:t_answers],  @answer_count[:f_answers] ]
-              )
-      f.series( name: 'Votes',
-                data: [ 0,                          @answer_count[:e_answers] ]
+
+      # stacked answers : True/0   and   No/Abstentions
+
+      f.series( name: '',
+                
+                data: { x: [ @answer_count[:t_answers],  @answer_count[:f_answers] ]}
+                
+                #color: '#bbaa99'
+
               )
 
+      f.series( name: '',
+                data: {x: [ 0,                          @answer_count[:e_answers] ]},
+                #color: 'green'
+              )
+
+ 
       ### Options for Bar
       f.options[:chart][:defaultSeriesType] = "column"
-      #f.options[:xAxis][:categories] = ['Yes', 'No']
-      #f.options[:yAxis][:allowDecimals] = false
+      #f.options[:xAxis][:categories] = ['Yes', 'No', 'Abstentions']
       f.xAxis (
         { 
           categories:  ['Yes', 'No/Abstentions'],
@@ -39,6 +50,7 @@ class GraphsController < ApplicationController
         }
       )
 
+      #f.options[:yAxis][:allowDecimals] = false
       f.yAxis({
             allowDecimals: 'false', 
             stackLabels: { enabled: 'true' , 
@@ -48,16 +60,18 @@ class GraphsController < ApplicationController
                                     }
                         }
       })
-      f.options[:yAxis][:allowDecimals] = false
 
-
+      
       #f.labels(:items=>[:html=>"Total fruit consumption", :style=>{:left=>"40px", :top=>"8px", :color=>"black"} ]) 
+      f.plot_options(
+          {
+            series:  { stacking: "normal"},
+            columns: { stacking: "normal"},
 
+          }
+      )
 
-
-      f.plot_options({ series: { stacking: "normal"} })
-
-
+     
       #@chart2 = LazyHighCharts::HighChart.new('column') do |f|
       #  f.series(:name=>'John',:data=> [3, 20, 3, 5, 4, 10, 12 ])
       #  f.series(:name=>'Jane',:data=> [1, 3, 4, 3, 3, 5, 4, -4 ] ) 

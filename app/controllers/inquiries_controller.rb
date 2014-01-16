@@ -1,6 +1,7 @@
 class InquiriesController < ApplicationController
   before_action :set_inquiry, only: [:show, :edit, :update, :destroy]
   before_action :get_active_question
+  before_action :authenticate
   #rescue_from ActiveRecord::RecordNotFound, with: :no_record_error
 
 
@@ -33,6 +34,10 @@ class InquiriesController < ApplicationController
   # POST /inquiries.json
   def create
     @inquiry = Inquiry.new(inquiry_params)
+#    if @inquiry.answer = ''
+#      redirect_to inquiry_path(params[:id]), alert: 'Please choose Yes/No/Abstent.'
+#    end
+
     @inquiry.session_id = session[:current_user_id]
     @inquiry.question_id = @question.id
 
@@ -87,4 +92,5 @@ private
   def inquiry_params
     params.require(:inquiry).permit(:answer, :remark)
   end
+
 end

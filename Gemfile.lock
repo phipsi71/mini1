@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/seyhunak/twitter-bootstrap-rails.git
-  revision: 4b8a511e65181e28fd3caecdcf5ba730f4afe2b1
+  revision: f634e07d9c567e8e46abf95355514956121923d5
   specs:
     twitter-bootstrap-rails (2.2.8)
       actionpack (>= 3.1)
@@ -80,6 +80,8 @@ GEM
     less-rails (2.3.3)
       actionpack (>= 3.1)
       less (~> 2.3.1)
+    less-rails-bootstrap (3.0.2)
+      less-rails (~> 2.3.1)
     libv8 (3.11.8.17)
     mail (2.5.4)
       mime-types (~> 1.16)
@@ -162,6 +164,7 @@ DEPENDENCIES
   jquery-rails
   lazy_high_charts
   less-rails
+  less-rails-bootstrap
   rails (= 4.0.0)
   rvm-capistrano
   sass-rails (~> 4.0.0)

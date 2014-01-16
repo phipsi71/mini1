@@ -1,0 +1,14 @@
+      # stacked answers : True/0   and   No/Abstentions
+
+      f.series( name: '',
+                
+                data: { x: [ @answer_count[:t_answers],  @answer_count[:f_answers] ]}
+                
+                #color: '#bbaa99'
+
+              )
+
+      f.series( name: '',
+                data: {x: [ 0,                          @answer_count[:e_answers] ]},
+                #color: 'green'
+              )

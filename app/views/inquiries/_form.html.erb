@@ -22,13 +22,13 @@
 
 <div class="btn-group btn-group-large" data-toggle="buttons-radio">
 
-  <%= f.radio_button :answer, "true", :id=>"first",  :style=>"display:none;" %>
+  <%= f.radio_button :answer, "yes", id: "first", style: "display:none;" %>
   <label for="first" class="btn btn-primary btn-large">YES</label>
 
-  <%= f.radio_button :answer, "", :id=>"second", :checked=>true, :style=>"display:none;" %>
-  <label for="second" class="btn btn-large">Not sure</label>
+  <%= f.radio_button :answer, "abstention", id: "second",  style: "display:none;" %>
+  <label for="second" class="btn btn-large">Abstent.</label>
 
-  <%= f.radio_button :answer, "false", :id=>"third", :style=>"display:none;" %>
+  <%= f.radio_button :answer, "no", id: "third", style: "display:none;" %>
   <label for="third" class="btn btn-primary btn-large">NO</label>
   
 </div>
@@ -39,7 +39,7 @@
 
   <div class="field">
     <%= f.label :remark %>
-    <%= f.text_field :remark , :class=>"input-xlarge" %>
+    <%= f.text_field :remark, class: "input-xlarge" %>
   </div>
 
   <div class="actions">
@@ -49,5 +49,5 @@
 
 <% end %>  <!--   FORM END -->
   
-<p>Session: <%= session[:current_user_id] %></p>
+<!--p>Session: <%= session[:current_user_id] %></p-->
 

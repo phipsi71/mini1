@@ -1,18 +1,17 @@
 class Inquiry < ActiveRecord::Base
 
 
-	#validates :answer, presence: true
-	validates_uniqueness_of :question_id, :scope => [:session_id], :message => 'has already been answered'
+	validates_presence_of :answer, message: ': Please make a choice'
+	validates_inclusion_of  :answer, :in => ['yes', 'no', 'abstention'] 	
+	validates_uniqueness_of :question_id, :scope => [:session_id], message: 'has already been answered'
 
-
-	# Inquiry.where("answer = 't'").where("question_id = ?", @question.id).count
 
 	def self.get_values(active_question_id)
 		# active_question_id = Question.active.first.id
 		tot = Inquiry.where("question_id = ?", active_question_id).count
-		t = Inquiry.where("answer = 't'").where("question_id = ?", active_question_id).count
-		f = Inquiry.where("answer = 'f'").where("question_id = ?", active_question_id).count
-		e = Inquiry.where("answer is NULL").where("question_id = ?",  active_question_id).count
+		t = Inquiry.where("answer = 'yes'").where("question_id = ?", active_question_id).count
+		f = Inquiry.where("answer = 'no'").where("question_id = ?", active_question_id).count
+		e = Inquiry.where("answer = 'abstention'").where("question_id = ?",  active_question_id).count
 		v = Inquiry.where("answer is not NULL").where("question_id = ?",  active_question_id).count
 		{ total: tot, t_answers: t, f_answers: f, e_answers: e, v_answers: v, 
 			remarks: Inquiry.where("question_id = ?", active_question_id).collect {|r| r.remark} } # this is the return value : a hash ( including the remarks as array )
@@ -40,8 +39,5 @@ class Inquiry < ActiveRecord::Base
 	private
     # Use callbacks to share common setup or constraints between actions.
 
-	
-
-		
 
 end

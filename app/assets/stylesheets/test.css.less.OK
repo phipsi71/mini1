@@ -1,0 +1,16 @@
+
+@import "twitter/bootstrap";
+@import "twitter/bootstrap/buttons.less";
+@import "twitter/bootstrap/variables.less";
+@import "twitter/bootstrap/mixins.less";
+
+
+@myvar: #283a9b;
+@yourColor: #4D926F;
+@yourColorDarker : #4D926F;
+
+
+.btn-primary:active {
+  .button-variant(@btn-primary-color; @btn-primary-bg; @btn-primary-border);
+  //.button-variant(@myvar; @yourColor; @btn-primary-border);
+}
