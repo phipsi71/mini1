@@ -1,7 +1,7 @@
 class Inquiry < ActiveRecord::Base
 
 
-	validates_presence_of :answer, message: ': Please make a choice'
+	#validates_presence_of :answer, message: ': Please make a choice'
 	validates_inclusion_of  :answer, :in => ['yes', 'no', 'abstention'] 	
 	#validates_uniqueness_of :question_id, :scope => [:session_id], message: 'has already been answered'
 
