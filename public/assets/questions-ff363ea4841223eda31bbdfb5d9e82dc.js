@@ -1,1 +1,0 @@
-(function(){var n;this.myFunction=function(){},n=function(n){return n*n}}).call(this);
